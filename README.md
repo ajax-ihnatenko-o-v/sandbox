@@ -3,8 +3,3 @@ thirdline
 fourthline
 fifth
 sixth
-seven
-eightt
-ninth
-ten
-eleven
