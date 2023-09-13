@@ -14,7 +14,7 @@
             "uuid": "{66c3d13a-5b1a-47d7-a4ac-accb1a2e0c87}"
         }
     ],
-    "git_rebase_jenkins_job": "https://jenkins.stage-internal.ajax.systems/job/desktop_911/desktop_bot_jobs/test_oihnat_bot/buildWithParameters",
+    "git_rebase_jenkins_job": "https://jenkins.stage-internal.ajax.systems/job/desktop_911/desktop_bot_jobs/test_oihnat_bot",
     "git_user_name_to_telegram_matches": [
         {
             "telegram_id": "tg://user?id=317997736",
