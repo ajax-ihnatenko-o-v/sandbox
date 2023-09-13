@@ -1,6 +1,4 @@
 hello world
 c5
 c4
-c6
-c4
-c6
+
