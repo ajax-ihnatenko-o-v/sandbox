@@ -12,8 +12,8 @@ pipeline {
             steps {
                 sshagent(['APPS_QA_AUTOMATION_BITBUCKET']) {
                     // git url: "https://" + "${bitbucket_server_key}" + "/" + "${bitbucket_repo_path_key}" + ".git",
-                    //git url: "https://ajax-ihnatenko-o-v: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@${bitbucket_server_key}/${bitbucket_repo_path_key}.git",
-		    git url: "https://ajax-ihnatenko-o-v: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@github.com/ajax-ihnatenko-o-v/sandbox.git",
+                    git url: "https://ajax-ihnatenko-o-v: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@${bitbucket_server_key}/${bitbucket_repo_path_key}.git",
+		    //git url: "https://ajax-ihnatenko-o-v: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@github.com/ajax-ihnatenko-o-v/sandbox.git",
                     credentialsId: 'desktop-merge-bot-bitbucket'
                 }
             }
