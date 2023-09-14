@@ -10,7 +10,7 @@ pipeline {
     stages {		
          stage('Checkout') {
 	sh '''
-		echo ${bitbucket_dst_branch_key}
+		echo ${bitbucket_dst_branch_key},
 		git checkout ${bitbucket_dst_branch_key}
 	'''
            // steps {
