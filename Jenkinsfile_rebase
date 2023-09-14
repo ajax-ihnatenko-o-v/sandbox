@@ -38,7 +38,7 @@ pipeline {
                             git checkout ${bitbucket_src_branch_key}
                             git checkout ${bitbucket_dst_branch_key}
                             git rebase ${bitbucket_src_branch_key}
-                            git push -f ${bitbucket_dst_branch_key}
+                            git push -f origin ${bitbucket_dst_branch_key}
                         '''
                     }
                 }
