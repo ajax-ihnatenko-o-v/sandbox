@@ -8,7 +8,11 @@ pipeline {
     }
 
     stages {		
-        // stage('Checkout') {
+         stage('Checkout') {
+	sh '''
+		echo ${bitbucket_dst_branch_key}
+		git checkout ${bitbucket_dst_branch_key}
+	'''
            // steps {
                 //sshagent(['APPS_QA_AUTOMATION_BITBUCKET']) {
                     // git url: "https://" + "${bitbucket_server_key}" + "/" + "${bitbucket_repo_path_key}" + ".git",
@@ -17,7 +21,7 @@ pipeline {
                     //credentialsId: 'desktop-merge-bot-bitbucket'
                 //}
             //}
-        //}
+        }
 
         stage('Rebase') {
             steps{
