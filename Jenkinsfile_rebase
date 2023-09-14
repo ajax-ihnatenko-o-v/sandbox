@@ -13,7 +13,7 @@ pipeline {
                 sshagent(['APPS_QA_AUTOMATION_BITBUCKET']) {
                     // git url: "https://" + "${bitbucket_server_key}" + "/" + "${bitbucket_repo_path_key}" + ".git",
                     //git url: "https://ajax-ihnatenko-o-v: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@${bitbucket_server_key}/${bitbucket_repo_path_key}.git",
-		    git url: "https://$ajax-ihnatenko-o-v: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@ajax-ihnatenko-o-v/sandbox.git",
+		    git url: "https://ajax-ihnatenko-o-v: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@ajax-ihnatenko-o-v/sandbox.git",
                     credentialsId: 'desktop-merge-bot-bitbucket'
                 }
             }
@@ -33,7 +33,7 @@ pipeline {
                             git checkout ${bitbucket_dst_branch_key}
                             git rebase ${bitbucket_src_branch_key}
                             // git push -f https://$username:$password@${bitbucket_server_key}/${bitbucket_repo_path_key} ${bitbucket_dst_branch_key}
-                            git push -f https://$ajax-ihnatenko-o-v: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@${bitbucket_server_key}/${bitbucket_repo_path_key} ${bitbucket_dst_branch_key}
+                            git push -f https://ajax-ihnatenko-o-v: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@${bitbucket_server_key}/${bitbucket_repo_path_key} ${bitbucket_dst_branch_key}
                         '''
                     }
                 }
