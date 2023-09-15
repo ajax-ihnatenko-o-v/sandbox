@@ -38,7 +38,7 @@ pipeline {
                             git checkout ${bitbucket_src_branch_key}
                             git checkout ${bitbucket_dst_branch_key}
                             git rebase ${bitbucket_src_branch_key}
-                            git push -f https://$username:$password@github.com/ihnatenko-o-v/sandbox ${bitbucket_dst_branch_key}
+                            git push -f https://$username:$password@github.com/ajax-ihnatenko-o-v/sandbox ${bitbucket_dst_branch_key}
                         '''
                     }
                 }
