@@ -1,0 +1,78 @@
+pipeline {
+    agent { label 'ci-x86-enc-u18.04-desktop-slave' }
+  
+    options {
+		disableConcurrentBuilds()
+        timeout(time: 20)
+        timestamps()
+    }
+
+    stages {		
+         stage('Checkout') {
+		steps {
+			sh '''
+				echo ${bitbucket_dst_branch_key},
+				git checkout ${bitbucket_dst_branch_key}
+			'''
+		}
+           // steps {
+                //sshagent(['APPS_QA_AUTOMATION_BITBUCKET']) {
+                    // git url: "https://" + "${bitbucket_server_key}" + "/" + "${bitbucket_repo_path_key}" + ".git",
+             //       git url: "https://ajax-ihnatenko-o-v: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@${bitbucket_server_key}/${bitbucket_repo_path_key}.git"
+		    //git url: "https://ajax-ihnatenko-o-v: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@github.com/ajax-ihnatenko-o-v/sandbox.git",
+                    //credentialsId: 'desktop-merge-bot-bitbucket'
+                //}
+            //}
+	}
+
+        stage('Rebase') {
+            steps{
+                sshagent(['APPS_QA_AUTOMATION_BITBUCKET']) {
+                    withCredentials([usernamePassword(credentialsId: 'ajax-ihnatenko-o-v',
+                                        usernameVariable: 'username',
+                                        passwordVariable: 'password')]){
+                        sh '''echo ${bitbucket_repo_path_key}
+                            echo ${bitbucket_src_branch_key}
+                            echo ${bitbucket_dst_branch_key}
+                            echo ${bitbucket_repo_name_key}
+                            git checkout ${bitbucket_src_branch_key}
+                            git checkout ${bitbucket_dst_branch_key}
+                            git rebase ${bitbucket_src_branch_key}
+                            git push -f https://$username:$password@github.com/ajax-ihnatenko-o-v/sandbox ${bitbucket_dst_branch_key}
+                        '''
+                    }
+                }
+            }
+        }
+    }
+
+    post{
+        success{
+            script {
+                if (getContext(hudson.FilePath)) {
+                    sh '''
+                        curl -X POST -H "bitbucket_rebase_result_key:0" -H "bitbucket_pull_request_id:$bitbucket_pull_request_id" -H "bitbucket_repo_path_key:$bitbucket_repo_path_key" https://7cfe-194-183-168-46.ngrok-free.app/rebase_result
+                    '''
+                }
+            }
+        }
+        aborted{
+            script {
+                if (getContext(hudson.FilePath)) {
+                    sh '''
+                        curl -X POST -H "bitbucket_rebase_result_key:1" -H "bitbucket_pull_request_id:$bitbucket_pull_request_id" -H "bitbucket_repo_path_key:$bitbucket_repo_path_key" https://7cfe-194-183-168-46.ngrok-free.app/rebase_result
+                    '''
+                }
+            }
+        }
+        failure{
+            script {
+                if (getContext(hudson.FilePath)) {
+                    sh '''
+                        curl -X POST -H "bitbucket_rebase_result_key:1" -H "bitbucket_pull_request_id:$bitbucket_pull_request_id" -H "bitbucket_repo_path_key:$bitbucket_repo_path_key" https://7cfe-194-183-168-46.ngrok-free.app/rebase_result
+                    '''
+                }
+            }
+        }
+    }
+}
