@@ -51,7 +51,7 @@ pipeline {
             script {
                 if (getContext(hudson.FilePath)) {
                     sh '''
-                        curl -X POST -H "git_provider_key:hello" -H "bitbucket_rebase_result_key:0" -H "bitbucket_pull_request_id:$bitbucket_pull_request_id" -H "bitbucket_repo_path_key:$bitbucket_repo_path_key" https://7cfe-194-183-168-46.ngrok-free.app/rebase_result
+                        curl -X POST -H "git_provider_key:$git_provider_key" -H "bitbucket_rebase_result_key:0" -H "bitbucket_pull_request_id:$bitbucket_pull_request_id" -H "bitbucket_repo_path_key:$bitbucket_repo_path_key" https://7cfe-194-183-168-46.ngrok-free.app/rebase_result
                     '''
                 }
             }
@@ -60,7 +60,7 @@ pipeline {
             script {
                 if (getContext(hudson.FilePath)) {
                     sh '''
-                        curl -X POST -H "git_provider_key:hello" -H "bitbucket_rebase_result_key:1" -H "bitbucket_pull_request_id:$bitbucket_pull_request_id" -H "bitbucket_repo_path_key:$bitbucket_repo_path_key" https://7cfe-194-183-168-46.ngrok-free.app/rebase_result
+                        curl -X POST -H "git_provider_key:git_provider_key" -H "bitbucket_rebase_result_key:1" -H "bitbucket_pull_request_id:$bitbucket_pull_request_id" -H "bitbucket_repo_path_key:$bitbucket_repo_path_key" https://7cfe-194-183-168-46.ngrok-free.app/rebase_result
                     '''
                 }
             }
@@ -69,7 +69,7 @@ pipeline {
             script {
                 if (getContext(hudson.FilePath)) {
                     sh '''
-                        curl -X POST -H "git_provider_key:hello" -H "bitbucket_rebase_result_key:1" -H "bitbucket_pull_request_id:$bitbucket_pull_request_id" -H "bitbucket_repo_path_key:$bitbucket_repo_path_key" https://7cfe-194-183-168-46.ngrok-free.app/rebase_result
+                        curl -X POST -H "git_provider_key:git_provider_key" -H "bitbucket_rebase_result_key:1" -H "bitbucket_pull_request_id:$bitbucket_pull_request_id" -H "bitbucket_repo_path_key:$bitbucket_repo_path_key" https://7cfe-194-183-168-46.ngrok-free.app/rebase_result
                     '''
                 }
             }
