@@ -1,12 +1,12 @@
 pipeline {
 	agent { label 'ci-x86-enc-u18.04-desktop-slave' }
-	
+
 	options {
 		disableConcurrentBuilds()
 	timeout(time: 20)
 	timestamps()
 	}
-	
+
 	stages {
 	// ----  Checkout ----
 		stage('Checkout') {
@@ -17,7 +17,7 @@ pipeline {
 			    }
 			}
 			}
-			
+
 			// -------------- Create a virtualenv --------------
 			stage('Sleep') {
 			steps{
